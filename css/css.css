@@ -168,12 +168,36 @@ td p {
     mix-blend-mode: normal;
     opacity: 0.4;
 }
+@media only screen and (max-width: 600px){
+  .logos {
+    margin: 26px 0px 7px -10px;
+    position: absolute;
+    width: 61px;
+    /* height: 70.02px; */
+    /* left: 379px; */
+    /* top: 343.21px; */
+    mix-blend-mode: normal;
+    opacity: 0.4;
+}  
+}
 .logos img{
   margin-right: 51px;
   margin-right: 51px;
   width: 70.86px;
   height: 21.57px;
 }
+
+  @media only screen and (max-width: 600px){
+ .logos img{
+  margin-right: 36px;
+  /* margin-right: 51px; */
+  width: 44.86px;
+  height: 21.57px;
+  float: left;
+} 
+}
+
+
 /* inputs styles */
 .inputs{
   display: block;
