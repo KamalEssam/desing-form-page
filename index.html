@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/css.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="contain">
+      <div class="top-page">
+        <p>
+          Trusted Over 153 <br />
+          Companies Around The World
+        </p>
+        <div class="logos">
+          <table>
+            <tr>
+              <td><img src="img/Microsoft-Logo-PNG.png" alt="" /></td>
+              <td><img src="img/580b57fcd9996e24bc43c51f.png" alt="" /></td>
+              <td><img src="img/Apple-Logo-PNG-Photos (1).png" alt="" /></td>
+              <td><img src="img/1280px-Behance_logo.svgtest.png" alt="" /></td>
+              <td><img src="img/facebook-logo-4.png" alt="" /></td>
+
+            </tr>
+          </table>
+        </div>
+        <div class="shape-1"></div>
+      </div>
+
+      <div class="shape-2">
+        <div class="form-1" id="val-form">
+          <p class="form-p1">Let's Talk</p>
+          <p class="form-p2">We help business to grow and spread out</p>
+          <form @submit="validate">
+            <div class="form-group">
+              <input
+                type="text"
+                class="  inputs"
+                id="exampleInputText1"
+                aria-describedby="emailHelp"
+                placeholder="Name"
+                v-model="name"
+              />
+              <p class="validate" v-if="nameError">{{nameError}}</p>
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                class="  inputs"
+                id="exampleInputText1"
+                placeholder="E-Mail"
+                v-model="email"
+              />
+              <p class="validate" v-if="emailError">{{emailError}}</p>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="  inputs"
+                id="exampleInputText1"
+                placeholder="phone Number"
+                v-model="phone"
+              />
+              <p class="validate" v-if="phoneError">{{phoneError}}</p>
+            </div>
+            <div class="form-group">
+              <textarea
+                name=""
+                class="  inputs"
+                id=""
+                cols="30"
+                rows="5"
+                v-model="message"
+              ></textarea>
+              <p class="validate" v-if="messageError">{{messageError}}</p>
+            </div>
+            <button type="submit" class="btn lts">Let's Talk</button>
+          </form>
+        </div>
+      </div>
+      <div class="inf">
+        <table>
+          <tr>
+            <td>
+              <img class="tb-img" src="img/mail.png" />
+            </td>
+            <td>
+              <p>
+                <span>E-mail</span> <br />
+                info@Ethraa.com
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img class="tb-img" src="img/cell-phone.png" />
+            </td>
+            <td>
+              <p><span>Phone</span><br />+20 1233435343</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img class="tb-img" src="img/location.png" />
+            </td>
+            <td>
+              <p>
+                <span>location</span> <br />
+                Riyad, Saudi Arabia
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/js.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/vue.js"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#val-form",
+        data: {
+          name: "",
+          nameError: "",
+          message: "",
+          messageError: "",
+          email: "",
+          emailError: "",
+          phone: "",
+          phoneError: "",
+        },
+        methods: {
+          validate: function (e) {
+            this.validateName();
+            this.validationEmail();
+            this.validationPhone();
+            this.validationMessage();
+
+            e.preventDefault();
+          },
+          validateName: function () {
+            if (this.name.length == 0) {
+              this.nameError = "name can't be empty";
+            } else {
+              this.nameError = "";
+            }
+          },
+          validationEmail: function () {
+            let emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+            if (!this.email) {
+              this.emailError = "email can't be empty";
+            } else if (!emailPattern.test(this.email)) {
+              this.emailError = "Please Enter Valild Email";
+            } else {
+              this.emailError = "";
+            }
+          },
+          validationPhone: function () {
+            if (!this.phone) {
+              this.phoneError = "Phone Is Required";
+            } else if (this.phone.length < 11) {
+              this.phoneError = "phone must be less than 12 number";
+            } else {
+              this.phoneError = "";
+            }
+          },
+          validationMessage: function () {
+            if (!this.message) {
+              this.messageError = "Message is required";
+            } else {
+              this.messageError = "";
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
